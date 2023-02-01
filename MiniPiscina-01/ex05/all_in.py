@@ -1,60 +1,44 @@
 import sys
 
-def check_args():
-    if len(sys.argv) == 1 or len(sys.argv) > 2:
+def check_args(arg):
+    if (len(arg) == 1 or len(arg) > 2):
         sys.exit()
 
-def state_or_capital(index, states, capital_cities):
-    if str in states:
-        return state
+def find_state(capital, states, capital_cities):
     for i in capital_cities:
-        if capital_cities[i] == index:
-            return capital
-    return 0
+        if (capital == capital_cities[i]):
+            for j in states:
+                if i == states[j]:
+                    return (j)
 
-def discover_state(capital, states, capital_cities):
-    for i in capital_cities:
-        if capital == capital_cities[i]:
-            sig = i
-    for i in states:
-        if sig == i:
-            state = i
-    print(f"{capital} is the capital of {state}")
-
-def discover_capital(state, states, capital_cities):
-    for i in states:
-        if i == state:
-            sig = state[i]
-
-    for i in capital_cities:
-        if sig == i:
-            state = capital_cities[i]
+def find_capital_city(state, states, capital_cities):
+    return (capital_cities[states[state]])
 
 def all_in():
     states = {
-        "Oregon" : "OR",
-        "Alabama" : "AL",
-        "New Jersey": "NJ",
-        "Colorado" : "CO"
-    }
+            "Oregon" : "OR",
+            "Alabama" : "AL",
+            "New Jersey": "NJ",
+            "Colorado" : "CO"
+            }
     capital_cities = {
-        "OR": "Salem",
-        "AL": "Montgomery",
-        "NJ": "Trenton",
-        "CO": "Denver"
-    }
-    lst = sys.argv[1].split(", ")
+            "OR": "Salem",
+            "AL": "Montgomery",
+            "NJ": "Trenton",
+            "CO": "Denver"
+            }
+    splited = sys.argv[1].split(',')
+    striped = [x.strip() for x in splited]
+    lst = filter(None, striped)
     for i in lst:
-        ret = state_or_capital(lst[i], states, capital_cities)
-        if ret == state:    
-           discover_state(i, states, capital_cities) 
-        if ret == capital:
-           discover_capital(i, states, capital_cities) 
+        if i.title() in states:
+            print(f"{find_capital_city(i.title(), states, capital_cities)} is the capital city of {i.title()}")
+        elif (find_state(i.title(), states, capital_cities)):
+            print(f"{i.title()} is the capital city of {find_state(i.title(), states, capital_cities)}")
         else:
             print(f"{i} is neither a capital city nor a state")
-    print(lst)
 
 if __name__ == '__main__':
-    check_args()
+    check_args(sys.argv)
     all_in()
 
