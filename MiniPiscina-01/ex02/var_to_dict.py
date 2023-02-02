@@ -1,5 +1,4 @@
 def var_to_dict():
-    dictionary = {}
     d = [
         ('Hendrix' , '1942'),
         ('Allman' , '1946'),
@@ -21,13 +20,14 @@ def var_to_dict():
         ('Frusciante', '1970'),
         ('Thompson' , '1949'),
         ('Burton' , '1939')
-    dict_temp = dict(d) 
-    for pos1, pos2 in dict_temp:
-        if not dct[pos2] == None:
-            dct[pos2] += " " + pos1
+    ]
+    dictionary = {}
+    for pos1, pos2 in d:
+        if dictionary.get(pos2) == None:
+            dictionary[pos2] = pos1
         else:
-            dct[pos2] = pos1
-    for year, name in dct.items():
+            dictionary[pos2] += " " + pos1
+    for year, name in dictionary.items():
         print(f"{year} : {name}")
 
 if __name__ == '__main__':
