@@ -1,32 +1,33 @@
 import sys
+import re
 
 def check_args(argv):
-    if (len(argv) > 2):
+    if (len(argv) == 1 or len(argv) > 2):
         sys.exit(1)
-    if (argv[1].find('.template') == -1):
+    if (re.search(".template", argv[1]) == None):
         sys.exit(1)
 
-def html(msg):
-    with open("cv.html", "w") as file:
-        file.write('<!DOCTYPE>\n')
-        file.write('<html lang="en">\n')
-        file.write('<head>\n')
-        file.write('    <meta charset="utf-8>\n')
-        file.write('    <title>Title</title>\n')
-        file.write('</head>\n')
-        file.write('<body>\n')
-        file.write(f'   {msg}\n')
-        file.write('</body>\n')
-        file.write('</html>')
-
-def open_file(filename):
+def open_template(filename):
     with open(filename, "r") as file:
-        msg = file.read()
-        html(msg)
+        lines = file.read()
+    return (lines)
+
+def open_settings():
+    with open("settings.py", "r") as file:
+        splited = file.read().split("\n")
+        dct = {}
+        for i in splited:
+            dct[i.split(" = ")[0].strip(' ')] = i.split(" = ")[1].strip(' "')
+    return (dct)
 
 def main():
     check_args(sys.argv)
-    open_file(sys.argv[1])
+    template = open_template(sys.argv[1])
+    settings = open_settings()
+    format_template = template.format(**settings)
+    print(format_template)
+    with open("index.html", "w") as file:
+        file.write(format_template)
 
 if __name__ == '__main__':
     main()

@@ -21,9 +21,9 @@ def my_sort():
         'Thompson' : '1949',
         'Burton' : '1939',
     }
-    lst = sorted(d.items())
-    for key, value in sorted(lst, key = lambda x:x[1]):
-        print(f"{key}")
+    sorted_dictionary = sorted(d.items(), key = lambda x:[x[1],x[0]])
+    for key in sorted_dictionary:
+        print(key[0])
 
 if __name__ == '__main__':
     my_sort() 
