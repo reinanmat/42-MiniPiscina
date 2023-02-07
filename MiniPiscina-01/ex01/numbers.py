@@ -1,10 +1,8 @@
 def numbers():
-    file = open("numbers.txt")
-    txt = file.read()
-    tab = txt.split(",")
-    for i in tab:
-        print(i)
-    file.close()
+    with open("numbers.txt", "r") as fd:
+        txt = fd.read().split(",")
+    for line in txt:
+        print(line)
 
 if  __name__ == '__main__':
     numbers()

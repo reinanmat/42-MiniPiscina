@@ -22,11 +22,11 @@ def var_to_dict():
         ('Burton' , '1939')
     ]
     dictionary = {}
-    for pos1, pos2 in d:
-        if dictionary.get(pos2) == None:
-            dictionary[pos2] = pos1
+    for key, value in d:
+        if dictionary.get(value) == None:
+            dictionary[value] = key
         else:
-            dictionary[pos2] += " " + pos1
+            dictionary[value] += " " + key
     for year, name in dictionary.items():
         print(f"{year} : {name}")
 

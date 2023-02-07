@@ -1,7 +1,7 @@
 import sys
 
-def check_args(arg):
-    if (len(arg) == 1 or len(arg) > 2):
+def check_args():
+    if (len(sys.argv) != 2):
         sys.exit()
 
 def find_state(capital, states, capital_cities):
@@ -16,17 +16,17 @@ def find_capital_city(state, states, capital_cities):
 
 def all_in():
     states = {
-            "Oregon" : "OR",
-            "Alabama" : "AL",
-            "New Jersey": "NJ",
-            "Colorado" : "CO"
-            }
+        "Oregon" : "OR",
+        "Alabama" : "AL",
+        "New Jersey": "NJ",
+        "Colorado" : "CO"
+    }
     capital_cities = {
-            "OR": "Salem",
-            "AL": "Montgomery",
-            "NJ": "Trenton",
-            "CO": "Denver"
-            }
+        "OR": "Salem",
+        "AL": "Montgomery",
+        "NJ": "Trenton",
+        "CO": "Denver"
+    }
     splited = sys.argv[1].split(',')
     striped = [x.strip() for x in splited]
     lst = filter(None, striped)
@@ -39,6 +39,6 @@ def all_in():
             print(f"{i} is neither a capital city nor a state")
 
 if __name__ == '__main__':
-    check_args(sys.argv)
+    check_args()
     all_in()
 
