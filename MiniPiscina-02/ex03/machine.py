@@ -30,7 +30,7 @@ class CoffeeMachine:
 def main():
     coffee_machine = CoffeeMachine()
     beverages = [Coffee(), Tea(), Chocolate(), Cappucciono()]
-    for i in range(11):
+    for i in range(0, 11):
         try:
             print(f"beverage : {i + 1}°")
             print(coffee_machine.server(random.choice(beverages)))
@@ -40,14 +40,14 @@ def main():
             print(f"{msg}")
             print("============================================\n")
     coffee_machine.repair()
-    for i in range(11):
+    for i in range(0, 11):
         try:
             print(f"beverage : {i + 1}°")
             print(coffee_machine.server(random.choice(beverages)))
             print("\n")
-        except Exception as msg:
+        except Exception as e:
             print("============================================")
-            print(f"{msg}")
+            print(f"{e}")
             print("============================================\n")
 
 if __name__ == '__main__':

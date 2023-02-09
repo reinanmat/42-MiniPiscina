@@ -23,7 +23,7 @@ if __name__ == '__main__':
     coffee = intern2.make_coffee()
     print(coffee)
     try:
-        intern2.work()
+        intern1.work()
     except Exception as msg:
         print(Exception(msg))
         

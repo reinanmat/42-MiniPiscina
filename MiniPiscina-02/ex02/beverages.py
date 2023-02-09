@@ -7,8 +7,7 @@ class HotBeverage:
         return ("Just some hot water in a cup.")
 
     def __str__(self):
-        msg = f"name : {self.name}\nprice : {self.price:.2f}\ndescription : {self.description()}"
-        return (msg)
+        return f"name : {self.name}\nprice : {self.price:.2f}\ndescription : {self.description()}"
 
 class Coffee(HotBeverage):
     def __init__(self):
@@ -37,15 +36,15 @@ class Cappucciono(HotBeverage):
 
 def main():
     beverage1 = HotBeverage()
-    print(beverage1)
+    print(f"{beverage1}\n")
     beverage2 = Coffee()
-    print(beverage2)
+    print(f"{beverage2}\n")
     beverage3 = Tea()
-    print(beverage3)
+    print(f"{beverage3}\n")
     beverage4 = Chocolate()
-    print(beverage4)
+    print(f"{beverage4}\n")
     beverage5 = Cappucciono()
-    print(beverage5)
+    print(f"{beverage5}\n")
 
 if __name__ == '__main__':
     main()
