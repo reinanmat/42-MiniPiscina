@@ -30,11 +30,17 @@ def all_in():
     splited = sys.argv[1].split(',')
     striped = [x.strip() for x in splited]
     lst = filter(None, striped)
+    organize_lst = []
     for i in lst:
+        tmp = ""
+        for word in list(filter(None, i.split(' '))):
+            tmp += word + ' '
+        organize_lst.append(tmp.strip())
+    for i in organize_lst:
         if i.title() in states:
-            print(f"{find_capital_city(i.title(), states, capital_cities)} is the capital city of {i.title()}")
+            print(f"{find_capital_city(i.title(), states, capital_cities)} is the capital of {i.title()}")
         elif (find_state(i.title(), states, capital_cities)):
-            print(f"{i.title()} is the capital city of {find_state(i.title(), states, capital_cities)}")
+            print(f"{i.title()} is the capital of {find_state(i.title(), states, capital_cities)}")
         else:
             print(f"{i} is neither a capital city nor a state")
 
