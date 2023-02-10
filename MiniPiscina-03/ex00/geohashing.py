@@ -7,9 +7,18 @@ def check_args():
 
 def main():
     check_args()
-    latitude = float(sys.argv[1])
-    longitude = float(sys.argv[2])
-    date = sys.argv[3].encode('utf-8')
+    try:
+        latitude = float(sys.argv[1])
+    except:
+        sys.exit("Error: Invalid latitude")
+    try:
+        longitude = float(sys.argv[2])
+    except:
+        sys.exit("Error: Invalid latitude")
+    try:
+        date = sys.argv[3].encode('utf-8')
+    except:
+        sys.exit("Error: Invalid date")
     antigravity.geohash(latitude, longitude, date)
 
 if __name__ == '__main__':
